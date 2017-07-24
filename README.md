@@ -2,5 +2,6 @@
 Kaggle competition for ApacheCN
 
 ```
-I am a slow walker, but I never walk backwards.
+I am a slow walker, but I never walk backwards.   
+                                        --- Abraham Lincoln
 ```
