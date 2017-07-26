@@ -53,38 +53,56 @@ def normalizing(array):
 
 
 def loadTrainData():
+    '''
+    Desc:
+        加载训练数据 -- train
+    Args:
+        none
+    Returns:
+        normalizing(formatToInt(data)) -- 返回归一化的训练数据的 features
+        formatToInt(label) -- 转换为 Int 类型的 label
+    '''
     l = []
-    with open('input/DigitRecognition/train.csv','r') as fp:
+    with open('input/DigitRecognition/simple_train.csv','r') as fp:
         lines = csv.reader(fp)
         for line in lines:
             l.append(line)
+    # remove title since the first line is the title
+    l.remove(l[0])
+    l = array(l)
+    # print "load train data array l is ", l, "and that's type is ==", type(l), "shape is ", shape(l)
+    label = l[:,0] # label is a 1*m(行数) matrix
+    # print "load train data --- label is ", label, "and that's type is ==", type(label), "shape is ", shape(label)
+    data = l[:,1:]
+    # print "load train data --- data is ", data, "and that's type is ==", type(data), "shape is ", shape(data)
+    return normalizing(formatToInt(data)), formatToInt(label)
+
+
+def loadTestData():
+    '''
+    Desc:
+        加载测试数据 -- test
+    Args:
+        none
+    Returns:
+        normalizing(formatToInt(data)) -- 返回归一化的测试数据的 features
+    '''
+    l = []
+    with open('input/DigitRecognition/simple_test.csv') as file:
+        lines = csv.reader(file)
+        for line in lines:
+            l.append(line)
+    # remove the title
+    l.remove(l[0])
+    data = array(l) # m * n (m 行 * n 列，这个文件中是没有 label 的)
+    return normalizing(formatToInt(data))
+
 
 
 if __name__ == '__main__':
+    loadTrainData()
 
 
-# def loadTrainData():
-#     l=[]
-#     with open('input/DigitRecognition/train.csv','r') as fp:
-#          lines=csv.reader(fp)
-#          for line in lines:
-#              l.append(line) #42001*785
-#     #remove title
-#     l.remove(l[0])
-#     l=array(l)
-#     label=l[:,0]
-#     data=l[:,1:]
-#     return nomalizing(toInt(data)),toInt(label) #label 1*42000  data 42000*784
-
-# def loadTestData():
-#     l=[]
-#     with open('input/DigitRecognition/test.csv') as file:
-#          lines=csv.reader(file)
-#          for line in lines:
-#              l.append(line)#28001*784
-#     l.remove(l[0])
-#     data=array(l)
-#     return nomalizing(toInt(data))  #  data 28000*784
 
 # def saveResult(result,csvName):
 #     with open(csvName,'wb') as myFile:    
