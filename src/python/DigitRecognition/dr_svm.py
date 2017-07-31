@@ -12,6 +12,7 @@ from numpy import *
 import csv
 import time
 from sklearn import svm
+from compiler.ast import flatten
 
 
 def formatToInt(array):
@@ -63,7 +64,7 @@ def loadTrainData():
         formatToInt(label) -- 转换为 Int 类型的 label
     '''
     l = []
-    with open('input/DigitRecognition/simple_train.csv','r') as fp:
+    with open('input/DigitRecognition/train.csv','r') as fp:
         lines = csv.reader(fp)
         for line in lines:
             l.append(line)
@@ -88,7 +89,7 @@ def loadTestData():
         normalizing(formatToInt(data)) -- 返回归一化的测试数据的 features
     '''
     l = []
-    with open('input/DigitRecognition/simple_test.csv') as file:
+    with open('input/DigitRecognition/test.csv') as file:
         lines = csv.reader(file)
         for line in lines:
             l.append(line)
@@ -121,10 +122,20 @@ def saveResult(result, csvName):
 
 
 def simpleSvmClassify(trainData, trainLabel, testData):
+    '''
+    Desc:
+        调用 sklearn 的 svm.SVC() 来进行分类
+    Args:
+        trainData -- 训练数据的 features
+        trainLabel -- 训练数据的对应的 label
+        testData -- 测试数据的 features 
+    Returns:
+        test_y -- 测试数据对应的 labels
+    '''
     svc = svm.SVC(C=10, kernel='rbf')
-    print "trainData==>", type(trainData), shape(trainData)
-    print "trainLabel==>", type(trainLabel), shape(trainLabel)
-    print "testData==>", type(testData), shape(testData)  
+    # print "trainData==>", type(trainData), shape(trainData)
+    # print "trainLabel==>", type(trainLabel), shape(trainLabel)
+    # print "testData==>", type(testData), shape(testData)  
     svc.fit(trainData, trainLabel)
     test_y = svc.predict(testData)
     saveResult(test_y,'output/DigitRecognizer/Result_simple_svm.csv')
@@ -134,27 +145,17 @@ def simpleSvmClassify(trainData, trainLabel, testData):
 def simpleDRecognition():
     loadStartTime = time.time()
     trainData,trainLabel=loadTrainData()
+    nanana = flatten(trainLabel.tolist())
+    newTrainLabel = array(nanana)
     loadEndTime=time.time()
     testData=loadTestData()
     print "load data finish"
     print('load data time used:%f' % (loadEndTime - loadStartTime))
     t = time.time()
-    result=simpleSvmClassify(trainData,trainLabel,testData)  
+    result=simpleSvmClassify(trainData,newTrainLabel,testData)  
     print "finish!"
     k=time.time()
     print('classify time used:%f' % (k - t))
 
 if __name__ == '__main__':
     simpleDRecognition()
-
-
-# def dRecognition():
-#     trainData,trainLabel=loadTrainData()
-#     print "load train data finish"
-#     testData=loadTestData()
-#     print "load test data finish"
-#     result=RFClassify(trainData,trainLabel,testData)   
-#     print "finish!"
-
-# if __name__ == '__main__':
-#     dRecognition()
