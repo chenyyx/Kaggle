@@ -15,8 +15,8 @@ import pandas as pd
 
 # 加载数据
 def opencsv():#使用pandas打开      
-    data = pd.read_csv('input/DigitRecognition/train.csv')      
-    data1=pd.read_csv('input/DigitRecognition/test.csv')
+    data = pd.read_csv('input/DigitRecognition/simple_train.csv')      
+    data1=pd.read_csv('input/DigitRecognition/simple_test.csv')
     train_data = data.values[0:,1:]#读入全部训练数据
     train_label = data.values[0:,0]
     test_data=data1.values[0:,0:]#测试全部测试个数据
@@ -48,13 +48,16 @@ def svmClassify(trainData,trainLabel,testData):
     svc.fit(train_x, trainLabel)
     h=time.time()
     test_y = svc.predict(test_x)
-    saveResult(test_y,'output/DigitRecognizer/Result_svm.csv')
+    saveResult(test_y,'output/DigitRecognizer/test.csv')
     return test_y
 
 
 def dRecognition_svm():
     loadStartTime = time.time()
     trainData,trainLabel,testData = opencsv()
+    print "trainData==>", type(trainData), shape(trainData)
+    print "trainLabel==>", type(trainLabel), shape(trainLabel)
+    print "testData==>", type(testData), shape(testData)
     loadEndTime=time.time()
     print "load data finish"
     print('load data time used:%f' % (loadEndTime - loadStartTime))

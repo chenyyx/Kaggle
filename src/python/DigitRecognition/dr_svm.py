@@ -98,32 +98,54 @@ def loadTestData():
     return normalizing(formatToInt(data))
 
 
+def saveResult(result, csvName):
+    '''
+    Desc:
+        将我们识别出来的数字存储到 csv 文件中，得到 submission
+    Args:
+        result -- 我们得到的识别的结果
+        csvName -- 我们写入的 csv 文件名称
+    Returns:
+        无
+    '''
+    with open(csvName,'wb') as myFile:
+        myWriter = csv.writer(myFile)
+        myWriter.writerow(["ImageId", "Label"])
+        index = 0
+        for i in result:
+            tmp=[]
+            index = index + 1
+            tmp.append(index)
+            tmp.append(int(i))
+            myWriter.writerow(tmp)
+
+
+def simpleSvmClassify(trainData, trainLabel, testData):
+    svc = svm.SVC(C=10, kernel='rbf')
+    print "trainData==>", type(trainData), shape(trainData)
+    print "trainLabel==>", type(trainLabel), shape(trainLabel)
+    print "testData==>", type(testData), shape(testData)  
+    svc.fit(trainData, trainLabel)
+    test_y = svc.predict(testData)
+    saveResult(test_y,'output/DigitRecognizer/Result_simple_svm.csv')
+    return test_y
+    
+
+def simpleDRecognition():
+    loadStartTime = time.time()
+    trainData,trainLabel=loadTrainData()
+    loadEndTime=time.time()
+    testData=loadTestData()
+    print "load data finish"
+    print('load data time used:%f' % (loadEndTime - loadStartTime))
+    t = time.time()
+    result=simpleSvmClassify(trainData,trainLabel,testData)  
+    print "finish!"
+    k=time.time()
+    print('classify time used:%f' % (k - t))
 
 if __name__ == '__main__':
-    loadTrainData()
-
-
-
-# def saveResult(result,csvName):
-#     with open(csvName,'wb') as myFile:    
-#         myWriter=csv.writer(myFile)
-#         myWriter.writerow(["ImageId","Label"])
-#         index=0;
-#         for i in result:
-#             tmp=[]
-#             index=index+1
-#             tmp.append(index)
-#             #tmp.append(i)
-#             tmp.append(int(i))
-#             myWriter.writerow(tmp)
-
-
-# def RFClassify(trainData,trainLabel,testData):
-#     nbCF=RandomForestClassifier(n_estimators=200,warm_start = True)
-#     nbCF.fit(trainData,ravel(trainLabel))
-#     testLabel=nbCF.predict(testData)
-#     saveResult(testLabel,'output/DigitRecognizer/Result.csv')
-#     return testLabel
+    simpleDRecognition()
 
 
 # def dRecognition():
