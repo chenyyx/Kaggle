@@ -48,16 +48,16 @@ def svmClassify(trainData,trainLabel,testData):
     svc.fit(train_x, trainLabel)
     h=time.time()
     test_y = svc.predict(test_x)
-    saveResult(test_y,'output/DigitRecognizer/Result_SVM_Pandas.csv')
+    saveResult(test_y,'output/DigitRecognizer/Result_SVM_Pandas_third.csv')
     return test_y
 
 
 def dRecognition_svm():
     loadStartTime = time.time()
     trainData,trainLabel,testData = opencsv()
-    print "trainData==>", type(trainData), shape(trainData)
-    print "trainLabel==>", type(trainLabel), shape(trainLabel)
-    print "testData==>", type(testData), shape(testData)
+    # print "trainData==>", type(trainData), shape(trainData)
+    # print "trainLabel==>", type(trainLabel), shape(trainLabel)
+    # print "testData==>", type(testData), shape(testData)
     loadEndTime=time.time()
     print "load data finish"
     print('load data time used:%f' % (loadEndTime - loadStartTime))
