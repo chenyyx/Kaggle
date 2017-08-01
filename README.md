@@ -64,4 +64,5 @@ I am a slow walker, but I never walk backwards.
 ![sklearn_Outlier_detection](/images/sklearn_detection.png "sklearn_Outlier_detection")
 
 <b>3. sklearn -- Kernel Density Estimate of Species Distributions</b>
+
 ![sklearn_3](/images/sklearn.png "sklearn_3")
