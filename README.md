@@ -1,9 +1,15 @@
 # Kaggle
 My note on Kaggle Competitions
 
+
+
 ```
 I am a slow walker, but I never walk backwards.   
-                                        --- Abraham Lincoln
+                                        -- Abraham Lincoln
+                                        
+We choose to go to the moon in this decade and do the other things,
+not because they are easy, but because they are hard.
+                                        -- John F. Kennedy, 1962
 ```
 
 > My source code may use the scikit-learn and so many python packages such as numpy,matplotlib,pandas, etc.
