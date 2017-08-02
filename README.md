@@ -1,5 +1,5 @@
 # Kaggle
-Hope you become a person like -- a kaggler.
+Hope you become a person like me -- a kaggler.
 
 
 
