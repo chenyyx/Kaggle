@@ -4,7 +4,7 @@
 
 > 声明
 
-本文引用 知乎 a2 Mia姐 发表的 《Kaggle入门，看这一篇就够了》 ，原文链接 [Kaggle 入门，看这一篇就够了](https://zhuanlan.zhihu.com/p/25686876)
+本文引用 知乎 a2 Mia姐 发表的 《Kaggle入门，看这一篇就够了》 ，感谢 a2 Mia姐的分享，原文链接 [Kaggle 入门，看这一篇就够了](https://zhuanlan.zhihu.com/p/25686876)
 
 ## Kaggle 是什么？
 
