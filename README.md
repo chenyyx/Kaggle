@@ -1,5 +1,5 @@
 # Kaggle
-My note on Kaggle Competitions
+Hope you become a person like -- a kaggler.
 
 
 
