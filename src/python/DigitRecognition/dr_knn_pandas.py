@@ -1,9 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 """
-Created on 2017-7-25 14:04:32
+Created on 2017-08-03 14:04:32
 @author: ApacheCN_xy
 Description: DigitRecognizer for sklearn_knn
+Tips:This knn used too much time to fit the model,and the Kaggle Score is 0.96800,not as my expected result~
 github: https://github.com/chenyyx/Kaggle
 """
 
@@ -45,18 +46,6 @@ def knnClassify(trainData,trainLabel,testData):
     testLabel=knnClf.predict(testData)
     saveResult(testLabel,'output/DigitRecognizer/Result_sklearn_knn.csv')
     return testLabel
-
-
-# def svmClassify(trainData,trainLabel,testData):
-#     pca = PCA(n_components=0.8, whiten=True)
-#     train_x = pca.fit_transform(trainData)
-#     test_x = pca.transform(testData)
-#     svc = SVC(kernel='rbf', C=10)
-#     svc.fit(train_x, trainLabel)
-#     h=time.time()
-#     test_y = svc.predict(test_x)
-#     saveResult(test_y,'output/DigitRecognizer/Result_SVM_Pandas_third.csv')
-#     return test_y
 
 
 def dRecognition_knn():
