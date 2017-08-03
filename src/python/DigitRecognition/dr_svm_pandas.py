@@ -3,7 +3,7 @@
 """
 Created on 2017-7-25 14:04:32
 @author: ApacheCN_xy
-Description: DigitRecognizer for sklearn_knn
+Description: DigitRecognizer for sklearn_svm
 github: https://github.com/chenyyx/Kaggle
 """
 
@@ -39,16 +39,31 @@ def saveResult(result,csvName):
 from sklearn.svm import SVC
 from sklearn.decomposition import PCA
 
-
+# 由于 sklearn 提供了几种 svm 的 kernel ，可以试着使用其他的 kernel ，比如 ‘linear’, ‘poly’, ‘rbf’, ‘sigmoid’, ‘precomputed’
 def svmClassify(trainData,trainLabel,testData):
+    '''
+    Desc:
+        使用 sklearn 提供的 svm 进行分类，使用不同的 kernel 进行测试,保持其他参数不变的情况下，rbf是其中最精确的，如下：
+        其中， kernel='rbf', Kaggle Score=0.98529
+            kernel='linear', Kaggle Score=0.92771 ,loadData time=8.708000,classify time=321.450000
+            kernel='poly', Kaggle Score=0.97757, loadData time=9.311000, classify time=123.567000
+            kernel='sigmoid', Kaggle Score=0.78414, loadData time=8.875000, classify time=97.245000
+            kernel='precomputed', Kaggle Score= there are something wrong ~ i will fix it later~~~
+    Args:
+        trainData -- <type 'numpy.ndarray'> 训练数据的 features
+        trainLabel -- <type 'numpy.ndarray'> 训练数据的 Label
+        testData -- <type 'numpy.ndarray'> 测试数据的 features
+    Returns:
+        test_y -- 测试数据完成分类的 Label
+    '''
     pca = PCA(n_components=0.8, whiten=True)
     train_x = pca.fit_transform(trainData)
     test_x = pca.transform(testData)
-    svc = SVC(kernel='rbf', C=10)
+    svc = SVC(kernel='sigmoid', C=10)
     svc.fit(train_x, trainLabel)
     h=time.time()
     test_y = svc.predict(test_x)
-    saveResult(test_y,'output/DigitRecognizer/Result_SVM_Pandas_third.csv')
+    saveResult(test_y,'output/DigitRecognizer/Result_SVM_Pandas_sigmoid.csv')
     return test_y
 
 
