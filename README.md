@@ -1,7 +1,5 @@
-# Kaggle
+# Kaggler
 Hope you become a person like me -- a kaggler.
-
-
 
 ```
 I am a slow walker, but I never walk backwards.   
