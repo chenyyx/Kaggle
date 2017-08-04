@@ -65,7 +65,8 @@ Often the hardest part of solving a machine learning problem can be finding the 
 Different estimators are better suited for different types of data and different problems.
 不同的 estimators 更适合于不同类型的数据和不同的问题。
 
-The flowchart below is designed to give users a bit of a rough guide on how to approach problems with regard to which estimators to try on your data.
+The flowchart below is designed to give users a bit of a rough guide on how to approach problems with regard 
+to which estimators to try on your data.
 下面的流程图旨在给用户一些关于如何处理哪些 estimators 可以运用在您的数据上的问题的粗略指南。
 ```
 
