@@ -4,7 +4,8 @@
 Created on 2017-8-3 18:32:16
 @author: ApacheCN_xy
 Description: DigitRecognizer for sklearn_naiveBayes
-Tips:
+Tips: GaussianNB,training time is short:7.800s Kaggle Score=0.55343
+        MultinomialNB,training time is short:6.235s Kaggle Score=0.83114
 github: https://github.com/chenyyx/Kaggle
 """
 
