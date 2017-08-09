@@ -312,3 +312,8 @@ Kernel trick.
 SVM 的基本原理基本上已经说的差不多了，下面咱们就来看看 SVM 在实际应用该如何使用了。幸运的是，在 python 下面，sklearn 提供了一个非常好用的机器学习算法，我们调用相关的包就好啦。
 
 ![sklearn_map](/images/SVM/ml_map.png "sklearn")
+
+
+## 小结
+
+学习 SVM 需要有耐心，当初研究这个部分的时候，炼哥（github [jiangzhonglian](https://github.com/jiangzhonglian)），法超大佬（github [geekidentity](https://github.com/geekidentity)），羊三大佬（github [sheepmen](https://github.com/sheepmen)），庭哥（github [wangyangting](https://github.com/wangyangting)）都花费了好长时间，我（github [Joy yx](https://github.com/chenyyx)）只能默默在角落发抖....
